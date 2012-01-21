@@ -63,7 +63,7 @@ class StoreController extends Controller
 			$artistCriteria->select = "*";
 			$artistCriteria->condition = "`ArtistId` = " . $_GET["artistid"];
 			
-			$this->render('index', array('Artists' => Artist::model()->findAll($artistCriteria),
+			$this->render('index', array('Artists' => Artist::model()->findAll($artistCriteria)
 			));
 		}
 		else{

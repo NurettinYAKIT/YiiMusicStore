@@ -40,7 +40,7 @@ $this->breadcrumbs=array(
 </table>
 
 <?php }
-	elseif($_GET["albid"] ){
+	elseif(isset($_GET["albid"]) ){
 		foreach($Albums as $Album){
 			echo '<img src="'. Yii::app()->request->baseurl . $Album->AlbumThumbUrl .'"/><br/>';
 			echo $Album->Title . "<br/>";
@@ -53,6 +53,6 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo  $this->id . '/' . $this->action->id ;?> </h1>
-<h3><?php echo $content ?></h3>
+<h3><?php echo "No index set. Himm... there must be a problem.. Check controllers.. And indexes.." ?></h3>
 
 <?php } ?>
