@@ -55,7 +55,7 @@ class StoreController extends Controller
 		}
 	}
 	
-	public  function function_name() {
+	public  function actionArtistDetails() {
 		
 		if($_GET["artistid"])
 		{
