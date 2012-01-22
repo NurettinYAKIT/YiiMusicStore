@@ -14,7 +14,7 @@ class StoreController extends Controller
 	{
 		if($_GET["gid"]){
 			$genreCriteria = new CDbCriteria();
-			$genreCriteria->select = "`GenreId`, `Name`, `Description`";
+			$genreCriteria->select = "GenreId, Name, Description";
 			$genreCriteria->condition = "genreId = " . $_GET["gid"];
 			
 			$artistCriteria = new CDbCriteria();
@@ -41,13 +41,17 @@ class StoreController extends Controller
 	
 	public function actionDetails()
 	{
-		if($_GET["albid"]){
+		if($_GET["albid"]&&$_GET["aid"]){
 
 			$albumCriteria = new CDbCriteria();
 			$albumCriteria->select = "*";
 			$albumCriteria->condition = "AlbumId = " . $_GET["albid"];
 			
-			$this->render('index', array('Albums' => Album::model()->findAll($albumCriteria) ) );
+			$artistCriteria = new CDbCriteria();
+			$artistCriteria->select = "*";
+			$artistCriteria->condition = "`ArtistId` = " . $_GET["aid"];
+			
+			$this->render('index', array('Albums' => Album::model()->findAll($albumCriteria),'Artists' => Artist::model()->findAll($artistCriteria) ) );
 		}
 		else{
 			$this->message = "Please select an album to view it's details";
